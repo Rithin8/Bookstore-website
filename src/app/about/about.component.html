@@ -1,0 +1,105 @@
+<div class="header">
+    <div class="container">
+        <div class="navbar">
+            <div class="logo">
+                <a routerLink="/"><img src="assets/logo.png" width="125px"></a>
+            </div>
+            <nav>
+                <ul id="MenuItems">
+                    <li><a routerLink="/home">Home</a></li>
+                    <li><a routerLink="/products">Products</a></li>
+                    <li><a routerLink="/about">About</a></li>
+                    <li><a routerLink="/account">Account</a></li>
+                    <li><a routerLink="/order-tracking">Order Tracking</a></li>
+                    
+                </ul>
+            </nav>
+            <a routerLink="/cart"><img src="assets/cart.png" width="30px" height="30px"></a>
+            <li *ngIf="!userService.getRole()"><a routerLink="/login">Login/Register</a></li>
+            <li *ngIf="userService.getRole()">
+              <button class="logout-btn" (click)="logout()">Logout</button>
+            </li>
+            
+        </div>
+    </div>
+  </div>
+<br>
+
+<div class="container">
+    <h2 style="color: maroon;">About Us:</h2><br>
+    <p>Welcome to Bookworms, your premier online book store!<br>
+        We're a team of book lovers dedicated to providing you with the best selection of books,<br>
+        competitive prices, and exceptional customer service.
+    </p><br>
+    <h2 style="color: maroon;">Our Mission:</h2><br>
+    <p>Our mission is to create a community of book enthusiasts who can discover, explore, and share their love of reading.
+        <br>We strive to make reading accessible and enjoyable for everyone, regardless of age, genre, or location.
+    </p><br>
+    <h2 style="color: maroon;">Our Team:</h2><br>
+    <ul>
+        <li><strong>1. Naga Neha Kunduru</strong></li>
+        <li><strong>2. Parvez Syed</strong></li>
+        <li><strong>3. Ajay Kumar Kotapuri</strong></li>
+        <li><strong>4. Rithin George Johnson</strong></li>
+        <li><strong>5. Ashwini N</strong></li>
+    </ul><br>
+    <h2 style="color: maroon;">Our Values:</h2><br>
+    <ul>
+        <li><strong>Customer satisfaction:</strong> We're committed to providing you with the best customer service and ensuring that you're completely satisfied with your book buying experience.</li><br>
+        <li><strong>Quality and selection:</strong> We strive to offer you the best selection of books, including new releases, bestsellers, and classics.</li><br>
+        <li><strong>Community engagement:</strong> We believe in building a community of book enthusiasts who can share their love of reading and discover new books and authors.</li><br>
+    </ul><br>
+    <h2 style="color: maroon;">Contact Us:</h2><br>
+    <p>We'd love to hear from you! Please contact us with any questions, comments, or suggestions:</p>
+    <ul>
+        <li>✉ <a href="mailto:neha.kunduru1808@gmail.com">neha.kunduru1808&#64;gmail.com</a></li>
+        <li>✉ <a href="mailto:syedparvez5577@gmail.com">syedparvez5577&#64;.com</a></li>
+        <li>✉ <a href="mailto:ajaykotapuri75@gmail.com">ajaykotapuri75&#64;.com</a></li>
+        <li>✉ <a href="mailto:rithinjohnson8@gmail.com">rithinjohnson8&#64;.com</a></li>
+        <li>✉ <a href="mailto:ashwinin646@gmail.com">ashwinin646&#64;.com</a></li>
+        <br><br>
+        <a href="tel:+919078491989">☎ +91-9078491989</a><br>
+        <a href="tel:+919652704985">☎ +91-9652704985</a><br>
+        <a href="tel:+918297080034">☎ +91-8297080034</a><br>
+        <a href="tel:+917094759898">☎ +91-7094759898</a><br>
+        <a href="tel:+919353648894">☎ +91-9353648894</a><br>
+    </ul>
+</div><br>
+
+<!-------------------footer------>
+
+<div class="footer">
+    <div class="container">
+        <div class="row">
+            <div class="footer-col-1">
+                <h3>Download Our App</h3>
+                <p>Download our mobile app for online shopping</p>
+                <div class="app-logo">
+                    <img src="assets/play-store.png" alt="">
+                    <img src="assets/app-store.png" alt="">
+                </div>
+            </div>
+            <div class="footer-col-2">
+                <p>Our Purpose is to inform, inspire, entertain, or preserve knowledge and stories for readers.</p>
+            </div>
+            <div class="footer-col-3">
+                <h3>Useful Links</h3>
+                <ul>
+                    <li>Return Policy</li>
+                    <li>Join Affiliate</li>
+                </ul>
+            </div>
+            <div class="footer-col-4">
+                <h3>Follow us</h3>
+                <ul>
+                    <li>Facebook</li>
+                    <li>Twitter</li>
+                    <li>Instagram</li>
+                    <li>Youtube</li>
+                </ul>
+            </div>
+        </div>
+        <hr>
+        <p class="copyright">Copyright 2020 -Easy Tutorials</p>
+    </div>
+</div>

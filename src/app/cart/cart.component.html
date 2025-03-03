@@ -1,0 +1,105 @@
+<div class="header">
+  <div class="container">
+    <div class="navbar">
+      <div class="logo">
+        <a routerLink="/"><img src="assets/logo.png" width="125px"></a>
+      </div>
+      <nav>
+        <ul id="MenuItems">
+          <li><a routerLink="/home">Home</a></li>
+          <li><a routerLink="/products">Products</a></li>
+          <li><a routerLink="/about">About</a></li>
+          <li><a routerLink="/account">Account</a></li>
+          <li><a routerLink="/order-tracking">Order Tracking</a></li>
+        </ul>
+      </nav>
+      <a routerLink="/cart"><img src="assets/cart.png" width="30px" height="30px"></a>
+
+      <li *ngIf="!userService.getRole()"><a routerLink="/login">Login/Register</a></li>
+      <li *ngIf="userService.getRole()">
+        <button class="logout-btn" (click)="logout()">Logout</button>
+      </li>
+    </div>
+  </div>
+</div>
+
+<!-- Cart Table -->
+<table>
+  <thead>
+    <tr>
+      <th>Product</th>
+      <th>Price</th>
+      <th>Quantity</th>
+      <th>Subtotal</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of cartItems">
+     <td *ngIf="item.book; else loading">
+  <img [src]="item.book.imageUrl" alt="{{ item.book.name }}" />
+  <p>{{ item.book.name }}</p>
+  <p>Price: Rs.{{ item.book.price }}</p>
+</td>
+<ng-template #loading>
+  <td>Loading...</td>
+</ng-template>
+
+      <td>Rs. {{ item.book.price * item.quantity }}</td>
+      
+      <td>
+        <input type="number" [(ngModel)]="item.quantity" min="1" (change)="updateQuantity(item)" (keypress)="validateQuantity($event)" />
+
+      </td>
+      <td>Rs. {{ item.book.price * item.quantity }}</td>
+      <td>
+        <a href="#" (click)="$event.preventDefault(); removeFromCart(item)">Remove</a>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<!-- Cart Summary -->
+<div class="cart-summary">
+  <p>Subtotal: Rs.{{ subtotal.toFixed(2) }}</p>
+  <p>Tax (5%): Rs.{{ tax.toFixed(2) }}</p>
+  <p>Total: Rs.{{ total.toFixed(2) }}</p>
+  <button (click)="checkout()">Checkout</button>
+</div>
+
+<!-- Footer -->
+<div class="footer">
+  <div class="container">
+    <div class="row">
+      <div class="footer-col-1">
+        <h3>Download Our App</h3>
+        <p>Download our mobile app for online shopping</p>
+        <div class="app-logo">
+          <img src="assets/play-store.png" alt="">
+          <img src="assets/app-store.png" alt="">
+        </div>
+      </div>
+      <div class="footer-col-2">
+        <p>Our Purpose is to inform, inspire, entertain, or preserve knowledge and stories for readers.</p>
+      </div>
+      <div class="footer-col-3">
+        <h3>Useful Links</h3>
+        <ul>
+          <li>Return Policy</li>
+          <li>Join Affiliate</li>
+        </ul>
+      </div>
+      <div class="footer-col-4">
+        <h3>Follow us</h3>
+        <ul>
+          <li>Facebook</li>
+          <li>Twitter</li>
+          <li>Instagram</li>
+          <li>Youtube</li>
+        </ul>
+      </div>
+    </div>
+    <hr>
+    <p class="copyright">Copyright 2020 - Easy Tutorials</p>
+  </div>
+</div>

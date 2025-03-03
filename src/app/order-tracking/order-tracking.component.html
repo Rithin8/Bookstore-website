@@ -1,0 +1,84 @@
+<div class="header">
+  <div class="container">
+      <div class="navbar">
+          <div class="logo">
+              <a routerLink="/"><img src="assets/logo.png" width="125px"></a>
+          </div>
+          <nav>
+              <ul id="MenuItems">
+                  <li><a routerLink="/home">Home</a></li>
+                  <li><a routerLink="/products">Products</a></li>
+                  <li><a routerLink="/about">About</a></li>
+                  <li><a routerLink="/account">Account</a></li>
+                  <li><a routerLink="/order-tracking">Order Tracking</a></li>
+                
+              </ul>
+          </nav>
+          <a routerLink="/cart"><img src="assets/cart.png" width="30px" height="30px"></a>
+          <li *ngIf="!userService.getRole()"><a routerLink="/login">Login/Register</a></li>
+          <li *ngIf="userService.getRole()">
+            <button class="logout-btn" (click)="logout()">Logout</button>
+          </li>
+      </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="text-center">
+      <h2>Track Your Order</h2><br>
+      <form (ngSubmit)="trackOrder()" #orderForm="ngForm">
+          <label for="order_id">Enter Order ID:</label><br>
+          <input type="text" id="order_id" name="order_id" [(ngModel)]="orderId" placeholder="E.g., 07e03f43-812c..." required>
+          <br><br>
+          <button type="submit">Track Order</button>
+      </form>
+  </div>
+
+  <div class="result" *ngIf="searchResult">
+      <p><strong>Order ID:</strong> {{searchResult.orderId}}</p>
+      <!-- <p><strong>Book Name:</strong> {{ searchResult.book_name}}</p> -->
+      <p><strong>Status:</strong> {{searchResult.status}}</p>
+      <p><strong>Estimated Delivery:</strong> Hurray Order Accepted!! Delivery Soon ! {{searchResult.delivery_date}}</p>
+  </div>
+  
+  <div class="result" *ngIf="orderId && !searchResult">
+      <p>Order not found. Please enter valid Order  ID.</p>
+  </div>
+</div>
+
+<!-- Footer -->
+<div class="footer">
+  <div class="container">
+      <div class="row">
+          <div class="footer-col-1">
+              <h3>Download Our App</h3>
+              <p>Download our mobile app for online shopping</p>
+              <div class="app-logo">
+                  <img src="assets/play-store.png" alt="Play Store">
+                  <img src="assets/app-store.png" alt="App Store">
+              </div>
+          </div>
+          <div class="footer-col-2">
+              <p>Our Purpose is to inform, inspire, entertain, or preserve knowledge and stories for readers.</p>
+          </div>
+          <div class="footer-col-3">
+              <h3>Useful Links</h3>
+              <ul>
+                  <li>Return Policy</li>
+                  <li>Join Affiliate</li>
+              </ul>
+          </div>
+          <div class="footer-col-4">
+              <h3>Follow us</h3>
+              <ul>
+                  <li>Facebook</li>
+                  <li>Twitter</li>
+                  <li>Instagram</li>
+                  <li>Youtube</li>
+              </ul>
+          </div>
+      </div>
+      <hr>
+      <p class="copyright">Copyright 2020 - Easy Tutorials</p>
+  </div>
+</div>

@@ -1,0 +1,86 @@
+<div class="header">
+  <div class="container">
+      <div class="navbar">
+          <div class="logo">
+              <a routerLink="/"><img src="assets/logo.png" width="125px"></a>
+          </div>
+          <nav>
+              <ul id="MenuItems">
+                  <li><a routerLink="/home">Home</a></li>
+                  <li><a routerLink="/products">Products</a></li>
+                  <li><a routerLink="/about">About</a></li>
+                  <li><a routerLink="/account">Account</a></li>
+                  <li><a routerLink="/order-tracking">Order Tracking</a></li>
+                  
+              </ul>
+          </nav>
+          <a routerLink="/cart"><img src="assets/cart.png" width="30px" height="30px"></a>
+
+          <li *ngIf="!userService.getRole()"><a routerLink="/login">Login/Register</a></li>
+          <li *ngIf="userService.getRole()">
+            <button class="logout-btn" (click)="logout()">Logout</button>
+          </li>
+          
+      </div>
+  </div>
+</div>
+<div *ngIf="book" class="book-details-container">
+    <div class="book-detail">
+      <img [src]="book.imageUrl" [alt]="book.name">
+      <div class="book-info">
+        <h2>{{ book.name }}</h2>
+        <p><strong>Author:</strong> {{book.author}},</p>
+        <p><strong>Description:</strong> {{ book.description }}</p>
+        <p><strong>Price:</strong> Rs. {{ book.price }}</p>
+      
+        <p><strong>Published on :</strong>{{book.publication}}</p>
+  
+        <div class="button-container">
+          <button class="buy-now" (click)="buyNow(book)">Buy Now</button>
+          <button class="add-to-cart" (click)="addToCart()">Add to Cart</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <ng-template #errorTemplate>
+    <p>{{ errorMessage }}</p>
+  </ng-template>
+  <div class="footer">
+    <div class="container">
+      <div class="row">
+        <div class="footer-col-1">
+          <h3>Download Our App</h3>
+          <p>Download our mobile app for online shopping</p>
+          <div class="app-logo">
+            <img src="assets/play-store.png" alt="" />
+            <img src="assets/app-store.png" alt="" />
+          </div>
+        </div>
+        <div class="footer-col-2">
+          <p>
+            Our Purpose is to inform, inspire, entertain, or preserve knowledge and
+            stories for readers.
+          </p>
+        </div>
+        <div class="footer-col-3">
+          <h3>Useful Links</h3>
+          <ul>
+            <li>Return Policy</li>
+            <li>Join Affiliate</li>
+          </ul>
+        </div>
+        <div class="footer-col-4">
+          <h3>Follow us</h3>
+          <ul>
+            <li>Facebook</li>
+            <li>Twitter</li>
+            <li>Instagram</li>
+            <li>Youtube</li>
+          </ul>
+        </div>
+      </div>
+      <hr />
+      <p class="copyright">Copyright 2020 - Easy Tutorials</p>
+    </div>
+  </div>
+  

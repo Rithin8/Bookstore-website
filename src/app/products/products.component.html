@@ -1,0 +1,112 @@
+
+    <div class="header">
+        <div class="container">
+            <div class="navbar">
+                <div class="logo">
+                    <a routerLink="/"><img src="assets/logo.png" width="125px"></a>
+                </div>
+                <nav>
+                    <ul id="MenuItems">
+                        <li><a routerLink="/home">Home</a></li>
+                        <li><a routerLink="/products">Products</a></li>
+                        <li><a routerLink="/about">About</a></li>
+                        <li><a routerLink="/account">Account</a></li>
+                        <li><a routerLink="/order-tracking">Order Tracking</a></li>
+                        
+                    </ul>
+                  </nav>
+                
+                <a routerLink="/cart"><img src="assets/cart.png" width="30px" height="30px"></a>
+                <li *ngIf="!userService.getRole()"><a routerLink="/login">Login/Register</a></li>
+                <li *ngIf="userService.getRole()">
+                  <button class="logout-btn" (click)="logout()">Logout</button>
+                </li>
+            </div>
+        </div>
+    </div>
+    <br>
+    <input type="text" [(ngModel)]="searchQuery" (input)="searchProducts()" placeholder="Search products..." class="search-box"/><br><br>
+    <div class="small-container">
+        <div class="row row-2">
+            <strong><h2>Your Next Favorite Book Awaits!</h2></strong><br><br>
+            <select (change)="onSortChange($event)" style="width: 300px;">
+                <option>Default Sorting</option>
+                <option value="price low">Price(Low to High)</option>
+                <option value="price high">Price (High to Low)</option>
+                <option value="popularity">Sort by popularity</option>
+                
+            </select>
+        </div>
+
+        <ng-container *ngFor="let category of categories">
+            <h3 class="category-title">
+                {{ category === 'Fiction' ? '📖' :
+                   category === 'Non-Fiction' ? '📚' :
+                   category === 'Science & Technology' ? '🔬' :
+                   category === 'Self-Help' ? '💡' : '🕵️‍♂️' }}
+                {{ category }}
+            </h3>
+            <div class="row">
+              <div class="col-4" *ngFor="let book of getBooksByCategory(category)">
+                  <a (click)="navigateToBookDetails(book.id)">
+                    <img [src]="getProductImageUrl(book.imageUrl)" alt="Product Image">
+                    <h4>{{book.name}}</h4>
+                    <h6>{{book.author}}</h6>
+                  </a>
+                  <div class="rating">
+                    <ng-container *ngFor="let star of getStars(book.rating)">
+                        <i class="fa"
+                           [class.fa-star]="star === 2"
+                           [class.fa-star-half-alt]="star === 1"
+                           [class.fa-star-o]="star === 0"></i>
+                    </ng-container>
+                  </div>
+                    <p>Rs. {{book.price}}</p>
+                    <div class="button-container">
+                        <button class="buy-now" (click)="buyNow(book)">Buy Now</button>
+                        <button class="add-to-cart" (click)="addToCart(book)">Add to Cart</button>
+                    </div>
+                  </div>
+            </div>
+        </ng-container>
+    </div>
+    <!-- Footer -->
+  <div class="footer">
+    <div class="container">
+      <div class="row">
+        <div class="footer-col-1">
+          <h3>Download Our App</h3>
+          <p>Download our mobile app for online shopping</p>
+          <div class="app-logo">
+            <img src="assets/play-store.png" alt="" />
+            <img src="assets/app-store.png" alt="" />
+          </div>
+        </div>
+        <div class="footer-col-2">
+          <p>
+            Our Purpose is to inform, inspire, entertain, or preserve knowledge and
+            stories for readers.
+          </p>
+        </div>
+        <div class="footer-col-3">
+          <h3>Useful Links</h3>
+          <ul>
+            <li>Return Policy</li>
+            <li>Join Affiliate</li>
+          </ul>
+        </div>
+        <div class="footer-col-4">
+          <h3>Follow us</h3>
+          <ul>
+            <li>Facebook</li>
+            <li>Twitter</li>
+            <li>Instagram</li>
+            <li>Youtube</li>
+          </ul>
+        </div>
+      </div>
+      <hr />
+      <p class="copyright">Copyright 2020 - Easy Tutorials</p>
+    </div>
+  </div>
+  

@@ -1,0 +1,55 @@
+.order-confirm-container {
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #c47575;
+    text-align: center;
+  }
+  
+  .order-details, .order-items, .order-total {
+    margin-bottom: 20px;
+    padding: 10px;
+    border-radius: 6px;
+    background: white;
+    box-shadow: 0 2px 5px rgba(115, 15, 15, 0.1);
+  }
+  
+  .order-items .order-item {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .order-items .order-item:last-child {
+    border-bottom: none;
+  }
+  
+  .item-details h4 {
+    margin: 5px 0;
+  }
+  
+  button {
+    background-color: maroon;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+  
+  button:hover {
+    background-color: #218838;
+  }
+  
+  .loading {
+    font-style: italic;
+    color: #666;
+  }
+  
+  .error {
+    color: red;
+    font-weight: bold;
+  }
+  

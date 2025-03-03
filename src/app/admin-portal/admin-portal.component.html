@@ -1,0 +1,191 @@
+<div class="wrapper">
+  <!-- Sidebar -->
+  <nav id="sidebar" [class.collapsed]="isSidebarCollapsed">
+    <div class="sidebar-header">
+      <h4 class="p-3 text-white">Admin Panel</h4>
+    </div>
+    <ul class="list-unstyled components">
+      <a href="#" (click)="switchView('dashboard'); $event.preventDefault()" class="nav-link text-white">Dashboard</a>
+      <a href="#" (click)="switchView('users'); $event.preventDefault()" class="nav-link text-white">Users</a>
+      
+    </ul>
+  </nav>
+
+  <!-- Page Content -->
+  <div id="content" [class.expanded]="isSidebarCollapsed">
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light d-flex justify-content-between px-3">
+      <div class="container-fluid">
+        <button class="btn btn-dark" (click)="toggleSidebar()">☰</button>
+        <span class="navbar-brand ms-3">Panel</span><br><br>
+        <button class="btn btn-danger ms-auto" (click)="logout()">Logout</button>
+      </div>
+      
+    </nav>
+  
+
+    <div class="container mt-4">
+      <!-- Admin Dashboard Content -->
+      <div *ngIf="viewMode === 'dashboard'">
+        <h1>Admin Dashboard</h1>
+        <form #productForm="ngForm" (ngSubmit)="addProduct(productForm)">
+          <div class="form-group">
+            <label>Book Title</label>
+            <input type="text" [(ngModel)]="bookTitle" name="bookTitle" required>
+          </div>
+          <div class="form-group">
+            <label>Author</label>
+            <input type="text" [(ngModel)]="author" name="author" required>
+          </div>
+          <div class="form-group">
+            <label>Book Description</label>
+            <textarea [(ngModel)]="description" name="description" rows="4" required></textarea>
+          </div>
+          <div class="form-group">
+            <label>Publication Date</label>
+            <input type="text" [(ngModel)]="publication" name="publication" required>
+          </div>
+          <div class="form-group">
+            <label>Price (Rs.)</label>
+            <input type="number" [(ngModel)]="price" name="price" required>
+          </div>
+          <div class="form-group">
+            <label>Popularity(1-10)</label>
+            <input type="number" [(ngModel)]="popularity" name="popularity" required>
+          </div>
+          <!-- <div class="form-group">
+            <label>Rating (1-5)</label>
+            <input type="number"[(ngModel)]="rating" name="rating" required>
+          </div> -->
+          <div class="form-group">
+            <label>Genre</label>
+            <select [(ngModel)]="genre" name="genre">
+              <option value="Fiction">Fiction</option>
+              <option value="Non-Fiction">Non-Fiction</option>
+              <option value="Science & Technology">Science & Technology</option>
+              <option value="Self-Help">Self-Help </option>
+              <option value="Mystery & Thriller">Mystery & Thriller</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Book Image </label>
+            <input type="file" id="image" (change)="onFileSelected($event)">
+          </div>
+          <div class="form-group">
+            <label for="imageUrl">GitHub Image URL:</label>
+            <input type="text" id="imageUrl" (input)="onImageUrlChange($event)">
+          </div>
+          <button type="submit" class="btn">Add Product</button>
+        </form><br>
+        <div class="mb-3">
+          <input type="text" class="form-control" [(ngModel)]="productSearchTerm" 
+                 placeholder="Search products..." name="productSearch">
+        </div>
+
+        <div>
+          <div class="product-item" *ngFor="let book of books | filter: productSearchTerm; let i = index">
+            <div class="product-content">
+              <img *ngIf="book.imageUrl" [src]="book.imageUrl" alt="Product Image" class="product-image">
+              <div>
+                <p><strong>{{ book.name }}</strong> by {{ book.author }}</p>
+                <p>Genre: {{ book.genre }}</p>
+                <p>Published on: {{ book.publication }}</p>
+                <p>{{ book.description }}</p>
+                <p>Price: Rs.{{ book.price }}</p>
+                
+                
+              </div>
+            </div>
+            <button class="btn btn-remove" (click)="removeProduct(book.id, i)">Remove</button>
+
+          </div>
+        </div>
+      </div>
+
+      <!-- User Management Content -->
+      <div *ngIf="viewMode === 'users'">
+        <h2>User Management</h2>
+        <button class="add-button" (click)="showAddUserModal()">Add New User</button>
+        <div class="mb-3">
+          <input type="text" class="form-control" [(ngModel)]="userSearchTerm" 
+                 placeholder="Search users..." name="userSearch">
+        </div>
+        <table class="users-table">
+          <thead>
+            <tr>
+              <th>UserId</th>
+              <th>Username</th>
+              <th>Email</th>
+              <th>Phone</th>
+              <th>Role</th>
+              <th>Password</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tbody>
+              <tr *ngFor="let user of users">
+                <td>{{ user.id }}</td>
+                <td>{{ user.username }}</td>
+                <td>{{ user.email }}</td>
+                <td>{{ user.phone }}</td>
+                <td>{{ user.role }}</td>
+                <td>{{ user.status }}</td>
+                <td>
+                
+                <button class="delete-button" *ngIf="user.id !== undefined" (click)="deleteUser(user.id!)">Delete</button>
+
+
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <!-- Add User Modal -->
+        <div class="modal" *ngIf="isModalVisible">
+          <div class="modal-content">
+            <h3>{{ editingUser ? 'Edit User' : 'Add New User' }}</h3>
+            <form (ngSubmit)="addUser()" #userForm="ngForm">
+
+              <div class="form-group">
+                <label>Username</label>
+                <input type="text" [(ngModel)]="newUser.username" name="username" required>
+              </div>
+              <div class="form-group">
+                <label>Email</label>
+                <input type="email" [(ngModel)]="newUser.email" name="email" required>
+              </div>
+              <div class="form-group">
+                <label>Phone Number</label>
+                <input type="tel" [(ngModel)]="newUser.phone" name="phoneNumber" required>
+              </div>
+              <div class="form-group">
+                <label>Password</label>
+                <input type="password" [(ngModel)]="newUser.password" name="password" required>
+              </div>
+              <div class="form-group">
+                <label>Role</label>
+                <select [(ngModel)]="newUser.role" name="role" required>
+                  <option value="admin">Admin</option>
+                  <option value="user">User</option>
+                  <option value="manager">Manager</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label>Status</label>
+                <select [(ngModel)]="newUser.status" name="status" required>
+                  <option value="active">Active</option>
+                  <option value="suspended">Suspended</option>
+                </select>
+              </div>
+              <div class="button-group">
+                <button type="submit">{{ editingUser ? 'Update' : 'Add' }}</button>
+                <button type="button" (click)="closeModal()">Cancel</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

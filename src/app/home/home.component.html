@@ -1,0 +1,150 @@
+<div class="header">
+  <div class="container">
+    <div class="navbar">
+      <div class="logo">
+        <a routerLink="/"><img src="assets/logo.png" width="125px" /></a>
+      </div>
+      <nav>
+        <ul id="MenuItems">
+          <li><a routerLink="/home">Home</a></li>
+          <li><a routerLink="/products">Products</a></li>
+          <li><a routerLink="/about">About</a></li>
+          <li><a routerLink="/account">Account</a></li>
+          <li><a routerLink="/order-tracking">Order Tracking</a></li>
+          
+        </ul>
+      </nav>
+      
+      <a routerLink="/cart"> 
+        <img src="assets/cart.png" width="30px" height="30px" />
+      </a>
+      <li *ngIf="!userService.getRole()"><a routerLink="/login">Login/Register</a></li>
+      <li *ngIf="userService.getRole()">
+        <button class="logout-btn" (click)="logout()">Logout</button>
+      </li>
+      <img
+        src="assets/images/menu.png"
+        class="menu-icon"
+        (click)="toggleMenu()"
+      />
+    </div>
+    <div class="row">
+      <div class="col-2">
+        <h1>Welcome to BookStore!</h1>
+        <p>
+          A bookstore is a heaven for book lovers,<br />
+          offering a vast array of stories, knowledge,<br />
+          and perspectives neatly arranged on shelves,<br />
+          inviting exploration and discovery
+        </p>
+        <a routerLink="/products" class="btn">Explore Books &#8594;</a>
+      </div>
+      <div class="col-2">
+        <img src="assets/images/bookstore.jpg" />
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Featured Categories -->
+<div class="categories">
+  <h2 class="title">Feauturing Soon</h2>
+  <div class="small-container">
+    <div class="row">
+      <div class="col-3" *ngFor="let category of categories">
+        <img [src]="category.image" />
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Featured Products -->
+<div class="small-container">
+  <h2 class="title">Featured Products</h2>
+  <div class="row">
+    <div class="col-4" *ngFor="let product of featuredProducts">
+      <img [src]="product.image" />
+      <h4>{{ product.title }}</h4>
+      <p>{{ product.author }}</p>
+      <p>Rs.{{ product.price }}</p>
+    </div>
+  </div>
+  <h2 class="title">Latest Products</h2>
+  <div class="row">
+    <div class="col-4" *ngFor="let product of latestProducts">
+      <img [src]="product.image" />
+      <h4>{{ product.title }}</h4>
+      <p>{{ product.author }}</p>
+      <p>Rs.{{ product.price }}</p>
+    </div>
+  </div>
+</div>
+<!-- Offer Section -->
+<div class="offer">
+  <div class="small-container">
+    <div class="row">
+      <div class="col-2">
+        <img src="assets/images/gonegrl.jpeg" width="90%" class="Offer-img" />
+      </div>
+      <div class="col-2">
+        <p>Exclusively Available On BookStore</p>
+        <h1>Snowed In For Christmas</h1>
+        <small>
+          A psychological thriller that keeps readers on the edge of their seats, 
+          Gone Girl unravels the dark complexities of marriage, deception, and media influence. 
+          When Amy Dunne mysteriously disappears on her anniversary, suspicion falls on her husband, 
+          Nick. As secrets unfold and manipulation runs deep, the story takes shocking twists,
+           making it an unforgettable exploration of trust, perception, and revenge.
+        </small><br>
+        <a routerLink="/products" class="btn">Buy Now &#8594;</a>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Brands -->
+<div class="brands">
+  <div class="small-container">
+    <div class="row">
+      <div class="col-5" *ngFor="let brand of brands">
+        <img [src]="brand.logo" alt="" />
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Footer -->
+<div class="footer">
+  <div class="container">
+    <div class="row">
+      <div class="footer-col-1">
+        <h3>Download Our App</h3>
+        <p>Download our mobile app for online shopping</p>
+        <div class="app-logo">
+          <img src="assets/play-store.png" alt="" />
+          <img src="assets/app-store.png" alt="" />
+        </div>
+      </div>
+      <div class="footer-col-2">
+        <p>
+          Our Purpose is to inform, inspire, entertain, or preserve knowledge and
+          stories for readers.
+        </p>
+      </div>
+      <div class="footer-col-3">
+        <h3>Useful Links</h3>
+        <ul>
+          <li>Return Policy</li>
+          <li>Join Affiliate</li>
+        </ul>
+      </div>
+      <div class="footer-col-4">
+        <h3>Follow us</h3>
+        <ul>
+          <li>Facebook</li>
+          <li>Twitter</li>
+          <li>Instagram</li>
+          <li>Youtube</li>
+        </ul>
+      </div>
+    </div>
+    <hr />
+    <p class="copyright">Copyright 2020 - Easy Tutorials</p>
+  </div>
+</div>

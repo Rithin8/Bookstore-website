@@ -1,0 +1,318 @@
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    font-family: 'Poppins',sans-serif;
+   
+}
+ 
+  /* Navigation
+  -------------------------------------------------- */
+  .navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 0;
+  }
+  
+  .logo {
+    display: flex;
+    align-items: center;
+  }
+  
+  .logo img {
+    transition: transform 0.3s ease;
+  }
+  
+  .logo img:hover {
+    transform: scale(1.05);
+  }
+  
+  nav {
+    flex: 1;
+    text-align: right;
+  }
+  
+  nav ul {
+    display: inline-block;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  nav ul li {
+    display: inline-block;
+    margin-right: 1.25rem;
+    position: relative;
+  }
+  
+  nav ul li:last-child {
+    margin-right: 0;
+  }
+  
+  nav ul li a {
+    font-weight: 500;
+    position: relative;
+    padding-bottom: 0.25rem;
+  }
+  
+  nav ul li a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -2px;
+    left: 0;
+    background-color: maroon;
+    transition: width 0.3s ease;
+  }
+  
+  nav ul li a:hover::after {
+    width: 100%;
+  }
+  
+  .navbar a[routerLink="/cart"] {
+    display: flex;
+    align-items: center;
+    margin-left: 1.5rem;
+    position: relative;
+    transition: transform 0.2s ease;
+  }
+  
+  .navbar a[routerLink="/cart"]:hover {
+    transform: scale(1.1);
+  }
+  
+a{
+    text-decoration: none;
+    color:#555;
+}
+P{
+    color:#555;
+}
+.container{
+    max-width: 1300px;
+    margin: auto;
+    padding-left: 25px;
+    padding-right: 25px;
+}
+.row{
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+  
+  /* Header styling */
+  .header {
+    background: radial-gradient(#fff, #ffd6d6);
+  }
+  /* Footer */
+.footer {
+    background: #000;
+    color: #fff;
+    padding: 60px 0 20px;
+    clear: both;  /* This ensures footer stays below the checkout */
+    margin-top: 200px; /* Added space between checkout and footer */
+    width: 100%;
+}
+
+.footer h3 {
+    color: #fff;
+    margin-bottom: 20px;
+    font-size: 18px;
+}
+
+.footer p {
+    color: #8a8a8a;
+    line-height: 1.6;
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.footer-col-1, .footer-col-2, .footer-col-3, .footer-col-4 {
+    flex-basis: 25%;
+    padding: 0 15px;
+    min-width: 250px;
+}
+
+.app-logo {
+    margin-top: 20px;
+}
+
+.app-logo img {
+    width: 140px;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.footer ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer ul li {
+    margin-bottom: 12px;
+    color: #8a8a8a;
+    cursor: pointer;
+}
+
+hr {
+    border: none;
+    background: #b5b5b5;
+    height: 1px;
+    margin: 20px 0;
+}
+
+.copyright {
+    text-align: center;
+    margin-top: 20px;
+    color: #8a8a8a;
+}
+ 
+
+
+.text-center {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+h2 {
+    color: #333;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+label {
+    font-size: 16px;
+    color: #555;
+}
+
+input {
+    width: 100%;
+    max-width: 300px;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+input:focus {
+    outline: none;
+    border-color: #4a90e2;
+    box-shadow: 0 0 5px rgba(74, 144, 226, 0.3);
+}
+
+button {
+    background-color: maroon;
+    color: white;
+    border: none;
+    padding: 12px 30px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #b6b12a;
+}
+
+.result {
+    margin-top: 30px;
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.result p {
+    margin: 10px 0;
+    color: #555;
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+.result strong {
+    color: #333;
+    margin-right: 8px;
+}
+/* Logout button styling */
+.logout-btn {
+    background-color: #d9534f;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s ease-in-out;
+  }
+  
+  .logout-btn:hover {
+    background-color: #c9302c;
+  }
+  
+  /* Ensuring the button aligns with other menu items */
+  .logout-container {
+    display: flex;
+    align-items: center;
+  }
+
+/* For error message */
+.result p:only-child {
+    color: #dc3545;
+    text-align: center;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .container {
+        margin: 20px;
+        padding: 15px;
+    }
+
+    input {
+        max-width: 100%;
+    }
+}
+/* medial quary for menu */
+@media only screen and (max-width:800px){
+    nav ul{
+        position: absolute;
+        top:100px;
+        left: 0;
+        background: #333;
+        width: 100%;
+        overflow: hidden;
+        transition: max-height 0.5s;
+    }
+    nav ul li{
+        display: block;
+        margin-right: 50px;
+        margin-top:10px ;
+        margin-bottom: 10px;
+    }
+    nav ul li a{
+        color: white;
+    }
+    .menu-icon{
+        display: block;
+        cursor: pointer;
+    }
+}

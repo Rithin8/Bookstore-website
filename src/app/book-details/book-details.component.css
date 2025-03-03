@@ -1,0 +1,276 @@
+.book-details-container {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    max-width: 1200px;
+    margin: 50px auto;
+    padding: 20px;
+    gap: 50px; /* Space between image and text */
+}
+
+.book-detail {
+    display: flex;
+    flex-direction: row;
+    gap: 50px; /* Ensures space between image and text */
+    align-items: flex-start;
+}
+
+.book-detail img {
+    width: 40%; /* Adjusted for a large image on the left */
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.book-info {
+    flex: 1; /* Allows text to take the remaining space */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.book-info h2 {
+    font-size: 32px;
+    margin-bottom: 15px;
+}
+
+.book-info p {
+    font-size: 18px;
+    line-height: 1.6;
+    margin-bottom: 10px;
+}
+
+.button-container {
+    margin-top: 20px;
+}
+
+.buy-now, .add-to-cart {
+    padding: 12px 20px;
+    font-size: 18px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-right: 10px;
+    transition: 0.3s ease-in-out;
+}
+
+.buy-now {
+    background-color: maroon;
+    color: white;
+}
+
+.buy-now:hover {
+    background-color: #0f6125;
+}
+
+.add-to-cart {
+    background-color: rgb(193, 193, 34);
+    color: white;
+}
+
+.add-to-cart:hover {
+    background-color: rgb(22, 112, 22)
+}
+/* Logout button styling */
+.logout-btn {
+    background-color: #d9534f;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s ease-in-out;
+  }
+  
+  .logout-btn:hover {
+    background-color: #c9302c;
+  }
+  
+  /* Ensuring the button aligns with other menu items */
+  .logout-container {
+    display: flex;
+    align-items: center;
+  }
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .book-details-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .book-detail {
+        flex-direction: column;
+        text-align: center;
+        align-items: center;
+    }
+
+    .book-detail img {
+        width: 80%;
+    }
+    .book-detail img {
+        width: 100%; 
+        max-width: 400px; 
+        height: auto;
+        display: block;
+        box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.3); 
+        border-radius: 8px;
+}
+}
+  /* Navigation
+  -------------------------------------------------- */
+  .navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 0;
+  }
+  
+  .logo {
+    display: flex;
+    align-items: center;
+  }
+  
+  .logo img {
+    transition: transform 0.3s ease;
+  }
+  
+  .logo img:hover {
+    transform: scale(1.05);
+  }
+  
+  nav {
+    flex: 1;
+    text-align: right;
+  }
+  
+  nav ul {
+    display: inline-block;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  nav ul li {
+    display: inline-block;
+    margin-right: 1.25rem;
+    position: relative;
+  }
+  
+  nav ul li:last-child {
+    margin-right: 0;
+  }
+  
+  nav ul li a {
+    font-weight: 500;
+    position: relative;
+    padding-bottom: 0.25rem;
+  }
+  
+  nav ul li a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -2px;
+    left: 0;
+    background-color: maroon;
+    transition: width 0.3s ease;
+  }
+  
+  nav ul li a:hover::after {
+    width: 100%;
+  }
+  
+  .navbar a[routerLink="/cart"] {
+    display: flex;
+    align-items: center;
+    margin-left: 1.5rem;
+    position: relative;
+    transition: transform 0.2s ease;
+  }
+  
+  .navbar a[routerLink="/cart"]:hover {
+    transform: scale(1.1);
+  }
+  
+a{
+    text-decoration: none;
+    color:#555;
+}
+P{
+    color:#555;
+}
+.container{
+    max-width: 1300px;
+    margin: auto;
+    padding-left: 25px;
+    padding-right: 25px;
+}
+.row{
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}  /* Header styling */
+  .header {
+    background: radial-gradient(#fff, #ffd6d6);
+  }
+  /* ---------------footer---------- */
+.footer{
+    background-color:black;
+    color:#8a8a8a;
+    font-size: 14px;
+    padding: 20px;
+}
+.footer p{
+    color:#8a8a8a;
+}
+.footer h3{
+    color:#ffff;
+    margin-bottom:0px;
+}
+.footer-col-1,.footer-col-2,.footer-col-3{
+    min-width:250px;
+    margin-bottom: 20px;
+}
+.footer-col-1{
+    flex-basis:10px;
+}
+.footer-col-2{
+    flex:1;
+    text-align: center;
+}
+.footer-col-3{
+    flex-basis: 12%;
+    text-align:center;
+}
+ul{
+    list-style-type: none;
+}
+.app-logo{
+    margin-top: 20px;
+}
+.app-logo img{
+    width: 140px;
+}
+.footer hr{
+    border: none;
+    background: #b5b5b5;
+    height:1px;
+    margin: 20px 0;
+}
+.copyright{
+    text-align: center;
+}
+.menu-icon{
+    width: 28px;
+    margin-left: 20px;
+    display:none;
+}
+
+  
+  
+

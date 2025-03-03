@@ -1,0 +1,126 @@
+<div class="header">
+  <div class="container">
+      <div class="navbar">
+          <div class="logo">
+              <a routerLink="/"><img src="assets/logo.png" width="125px"></a>
+          </div>
+          <nav>
+              <ul id="MenuItems">
+                <li><a routerLink="/home">Home</a></li>
+                <li><a routerLink="/products">Products</a></li>
+                <li><a routerLink="/about">About</a></li>
+                <li><a routerLink="/account">Account</a></li>
+                <li><a routerLink="/order-tracking">Order Tracking</a></li>
+              </ul>
+          </nav>
+          <a routerLink="/shopping-cart"><img src="assets/cart.png" width="30px" height="30px"></a>
+      </div>
+  </div>
+</div>
+
+<div class="Log">
+    <div class="form-box">
+      <div class="button-box">
+        <button type="button" class="toggle-btn" [class.active]="showLogin" (click)="showLoginForm()">Log In</button>
+        <button type="button" class="toggle-btn" [class.active]="!showLogin" (click)="showRegisterForm()">Register</button>
+      </div>
+  
+      <!-- Login Form -->
+      <form *ngIf="showLogin" [formGroup]="loginForm" (ngSubmit)="onLoginSubmit()" class="input-group">
+        <input type="email" formControlName="email" class="input-field" placeholder="Enter Email">
+        <div *ngIf="loginForm.get('email')?.invalid && loginForm.get('email')?.touched" class="error-message">
+          * Valid email is required
+        </div>
+  
+        <input type="password" formControlName="password" class="input-field" placeholder="Enter Password">
+        <div *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched" class="error-message">
+          * Password must have at least 6 characters
+        </div>
+  
+        <div class="checkbox-container">
+          <input type="checkbox" class="check-box">
+          <span>Remember Password</span>
+        </div>
+  
+        <button type="submit" class="submit-btn" [disabled]="loginForm.invalid">Log In</button>
+      </form>
+  
+      <!-- Register Form -->
+      <form *ngIf="!showLogin" [formGroup]="registerForm" (ngSubmit)="onRegisterSubmit()" class="input-group">
+        <input type="text" formControlName="username" class="input-field" placeholder="Username">
+        <div *ngIf="registerForm.get('username')?.invalid && registerForm.get('username')?.touched" class="error-message">
+          * Username is required
+        </div>
+  
+        <input type="email" formControlName="email" class="input-field" placeholder="Email Id">
+        <div *ngIf="registerForm.get('email')?.invalid && registerForm.get('email')?.touched" class="error-message">
+          * Valid email is required
+        </div>
+  
+        <input type="tel" formControlName="phone" class="input-field" placeholder="Enter Mobile Number">
+        <div *ngIf="registerForm.get('phone')?.invalid && registerForm.get('phone')?.touched" class="error-message">
+          * Enter a valid 10-digit mobile number
+        </div>
+  
+        <input type="password" formControlName="password" class="input-field" placeholder="Enter Password">
+        <div *ngIf="registerForm.get('password')?.invalid && registerForm.get('password')?.touched" class="error-message">
+          * Password must have at least 6 characters
+        </div>
+  
+        <select formControlName="role" class="input-field role-dropdown">
+          <option value="" disabled selected hidden>Select Role</option>
+          <option value="user">User</option>
+          <option value="admin">Admin</option>
+        </select>
+        <div *ngIf="registerForm.get('role')?.invalid && registerForm.get('role')?.touched" class="error-message">
+          * Please select a role
+        </div>
+  
+        
+        <input type="checkbox" formControlName="terms" class="check-box">
+        <span>I agree to the terms & conditions</span>
+<div *ngIf="registerForm?.get('terms')?.invalid && registerForm?.get('terms')?.touched" class="error-message">
+  * You must agree to the terms
+</div>
+  
+        <button type="submit" class="submit-btn" [disabled]="registerForm.invalid">Register</button>
+      </form>
+    </div>
+  </div>
+  
+<!-- Footer -->
+<div class="footer">
+  <div class="container">
+      <div class="row">
+          <div class="footer-col-1">
+              <h3>Download Our App</h3>
+              <p>Download our mobile app for online shopping</p>
+              <div class="app-logo">
+                  <img src="assets/play-store.png" alt="">
+                  <img src="assets/app-store.png" alt="">
+              </div>
+          </div>
+          <div class="footer-col-2">
+              <p>Our Purpose is to inform, inspire, entertain, or preserve knowledge and stories for readers.</p>
+          </div>
+          <div class="footer-col-3">
+              <h3>Useful Links</h3>
+              <ul>
+                  <li>Return Policy</li>
+                  <li>Join Affiliate</li>
+              </ul>
+          </div>
+          <div class="footer-col-4">
+              <h3>Follow us</h3>
+              <ul>
+                  <li>Facebook</li>
+                  <li>Twitter</li>
+                  <li>Instagram</li>
+                  <li>Youtube</li>
+              </ul>
+          </div>
+      </div>
+      <hr>
+      <p class="copyright">Copyright 2020 - Easy Tutorials</p>
+  </div>
+</div>
