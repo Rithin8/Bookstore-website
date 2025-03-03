@@ -1,0 +1,1 @@
+These are the frontend files for our Fullstack E-commerce boostore project
